@@ -9,9 +9,11 @@ Log entries are viewed in admin.
 Install
 -------
 Install package::
+
     pip install django-lumberjack
 
 Add ``'lumberjack'`` to your ``INSTALLED_APPS``::
+
     # settings.py
     
     INSTALLED_APPS = (
@@ -22,6 +24,7 @@ Add ``'lumberjack'`` to your ``INSTALLED_APPS``::
     )
 
 Add handler and logger configs::
+
     # settings.py
     LOGGING = {
         ...
@@ -39,6 +42,7 @@ Add handler and logger configs::
     }
 
 Create database tables::
+
     $ ./manage.py migrate lumberjack
 
 
@@ -46,6 +50,7 @@ Create database tables::
 Usage
 -----
 Example of logging in a view function::
+
     # views.py
 
     import logging
