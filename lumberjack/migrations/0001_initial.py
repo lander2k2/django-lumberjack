@@ -14,9 +14,9 @@ class Migration(migrations.Migration):
             name='LogEntry',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('time', models.DateTimeField(auto_now_add=True)),
                 ('level', models.CharField(max_length=16)),
                 ('message', models.TextField()),
+                ('logged_at', models.DateTimeField(auto_now_add=True)),
             ],
             options={
             },
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('tag', models.CharField(max_length=64)),
-                ('log_entries', models.ManyToManyField(to='lumberjack.LogEntry')),
+                ('log_entries', models.ManyToManyField(related_name='tags', to='lumberjack.LogEntry')),
             ],
             options={
             },
