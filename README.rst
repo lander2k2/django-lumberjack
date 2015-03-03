@@ -5,6 +5,11 @@ django-lumberjack
 Simple logging to the database for django projects.
 Log entries are viewed in admin.
 
+------------
+Requirements
+------------
+Django 1.7 or greater.
+
 -------
 Install
 -------
@@ -26,6 +31,7 @@ Add ``'lumberjack'`` to your ``INSTALLED_APPS``::
 Add handler and logger configs::
 
     # settings.py
+
     LOGGING = {
         ...
         'handlers': {
@@ -65,6 +71,7 @@ Example of logging in a view function::
 
         try: 
             # some action
+            ...
 
         except:
             logger.error('some action failed', [__name__, 'fml'])

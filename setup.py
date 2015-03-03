@@ -8,6 +8,6 @@ setup(name='django-lumberjack',
       author_email='lander2k2@gmail.com',
       license='MIT',
       packages=['lumberjack'],
-      install_requires=['django>=1.4,<1.8'],
+      install_requires=['django>=1.7'],
       zip_safe=False)
 
