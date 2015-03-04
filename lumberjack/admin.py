@@ -5,7 +5,7 @@ class LogEntryAdmin(admin.ModelAdmin):
     list_display = ('message', 'level', 'logged_at', 'tags')
     readonly_fields = ('level', 'message', 'logged_at', 'tags')
     list_filter = ('level', )
-    search_fields = ('message', )
+    search_fields = ('message', 'tags__tag')
 
     def tags(self, obj):
         tags = ''
