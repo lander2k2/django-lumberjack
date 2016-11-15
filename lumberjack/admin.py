@@ -1,18 +1,19 @@
 from django.contrib import admin
-from .models import LogEntry
+from .models import LogEntry, LogTag
 
+
+@admin.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
-    list_display = ('message', 'level', 'logged_at', 'tags')
-    readonly_fields = ('level', 'message', 'logged_at', 'tags')
+    list_display = ('message', 'level', 'logged_at', 'tags_display')
+    readonly_fields = ('level', 'message', 'logged_at', 'tags_display')
     list_filter = ('level', )
     search_fields = ('message', 'tags__tag')
 
-    def tags(self, obj):
-        tags = ''
-        for t in obj.tags.all():
-            tags += '{}, '.format(t.tag)
+    def get_queryset(self, request):
+        return super(LogEntryAdmin, self).get_queryset(
+            request
+        ).prefetch_related('tags')
 
-        return tags[:-2]
-
-admin.site.register(LogEntry, LogEntryAdmin)
-
+    def tags_display(self, obj):
+        return ', '.join(map(str, obj.tags.all()))
+    tags_display.short_description = 'Tags'
