@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='django-lumberjack',
-      version='0.2.2',
+      version='0.2.3',
       description='Simple logging. Stored in database, accessed in Django admin.',
       url='http://github.com/lander2k2/django-lumberjack',
       author='Richard Lander',
