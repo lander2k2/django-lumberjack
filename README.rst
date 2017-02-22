@@ -5,6 +5,10 @@ django-lumberjack
 Simple logging to the database for django projects.
 Log entries are viewed in admin.
 
+Note: Be sparing with the number of messages logged to the database.  It is
+convenient when you want events logged that can be viewed in the django admin,
+but logging excessively to the database can cripple performance.
+
 ------------
 Requirements
 ------------
@@ -20,7 +24,7 @@ Install package::
 Add ``'lumberjack'`` to your ``INSTALLED_APPS``::
 
     # settings.py
-    
+
     INSTALLED_APPS = (
         'django.contrib.admin',
         'django.contrib.auth',
@@ -64,12 +68,12 @@ Example of logging in a view function::
     logger = logging.getLogger('lumberjack')
 
     def someview(request):
-        
+
         logger.debug('someview was called', [__name__, 'sometag'])
 
         ...
 
-        try: 
+        try:
             # some action
             ...
 
